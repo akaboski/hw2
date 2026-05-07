@@ -23,4 +23,4 @@
 
 [build]
   command = "chmod +x node_modules/.bin/vite && npm run build"
-  publish = "build"
+  publish = "dist"
