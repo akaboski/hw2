@@ -37,15 +37,16 @@
         }
     }
 
+    $: xExtent = fullData.length > 0 ? d3.extent(fullData.map((d) => d.properties[variable])) : [0, 1];
     $: xScale = d3.scaleLinear()
         .range([0, chartW])
-        .domain(d3.extent(fullData.map((d) => d.properties[variable])));
+        .domain(xExtent);
     $: binData = d3.histogram()
         .value((d) => d.properties[variable])
         .domain(xScale.domain())
         .thresholds(xScale.ticks(30));
-    $: backgroundBins = binData(fullData);
-    $: bins = binData(data);
+    $: backgroundBins = fullData.length > 0 ? binData(fullData) : [];
+    $: bins = data.length > 0 ? binData(data) : [];
     $: yScale = d3.scaleLinear()
         .range([chartH, 0])
         .domain([0, d3.max(backgroundBins, (d) => d.length)]);
