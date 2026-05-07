@@ -20,3 +20,7 @@
   for = "/src/*"
   [headers.values]
     X-Content-Type-Options = "nosniff"
+
+[build]
+  command = "npm run build"
+  publish = "build"
