@@ -22,5 +22,5 @@
     X-Content-Type-Options = "nosniff"
 
 [build]
-  command = "npm run build"
+  command = "chmod +x node_modules/.bin/vite && npm run build"
   publish = "build"
